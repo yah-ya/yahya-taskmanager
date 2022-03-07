@@ -1,10 +1,10 @@
 {
-    "name": "yahya/taskmanager",
+    "name": "yahyya/taskmanager",
     "description": "Task Manager Test",
     "autoload": {
         "psr-4": {
             "Yahyya\\taskmanager\\": "src/",
-            "Yahyya\\taskmanager\\Tests\\": "tests",
+            "Yahyya\\taskmanager\\Tests\\": "tests"
         }
     },
     "authors": [
