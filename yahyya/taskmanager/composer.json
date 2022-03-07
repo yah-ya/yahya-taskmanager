@@ -1,0 +1,17 @@
+{
+    "name": "yahya/taskmanager",
+    "description": "Task Manager Test",
+    "autoload": {
+        "psr-4": {
+            "Yahyya\\taskmanager\\": "src/",
+            "Yahyya\\taskmanager\\Tests\\": "tests",
+        }
+    },
+    "authors": [
+        {
+            "name": "Yahya",
+            "email": "y.t.15132@gmail.com"
+        }
+    ],
+    "require": {}
+}
