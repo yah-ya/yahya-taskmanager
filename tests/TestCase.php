@@ -1,6 +1,6 @@
 <?php
 
-namespace Yahyya\taskmanager\Tests;
+namespace Tests;
 
 use Illuminate\Foundation\Testing\TestCase as BaseTestCase;
 

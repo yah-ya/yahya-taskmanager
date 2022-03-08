@@ -10,3 +10,12 @@
 ## About Package
 
 This package will add a ability of task management to your Laravel application
+
+
+
+
+
+## Installation
+composer require yahyya/taskmanager
+
+add \Yahyya\taskmanager\TaskmanagerServiceProvider::class, to the config file @ app.php
