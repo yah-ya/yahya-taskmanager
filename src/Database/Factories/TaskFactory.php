@@ -22,7 +22,7 @@ $factory->define(Task::class, function (Faker $faker) {
     return [
         'title' => $faker->name,
         'desc' => $faker->shuffleString,
-        'user_id'=> \Illuminate\Support\Facades\Auth::user()->id,
+        'user_id'=> \Illuminate\Support\Facades\Auth::check() ?? \Illuminate\Support\Facades\Auth::user()->id,
         'status' => rand(0,1),
     ];
 });

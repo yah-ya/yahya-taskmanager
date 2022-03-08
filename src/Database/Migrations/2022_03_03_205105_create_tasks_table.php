@@ -18,7 +18,7 @@ class CreateTasksTable extends Migration
             $table->string('title',100);
             $table->string('desc',500);
             $table->integer('user_id');
-            $table->foreign('user_id')->references('id')->on('users');
+//            $table->foreign('user_id')->references('id')->on('users');
             $table->boolean('status')->default('1');
 
             $table->index('user_id');

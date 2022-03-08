@@ -5,22 +5,29 @@ namespace Yahyya\taskmanager\App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Yahyya\taskmanager\App\Http\Requests\StoreLabel;
 use Yahyya\taskmanager\App\Http\Resources\LabelCollection;
+use Yahyya\taskmanager\App\Interfaces\LabelRepositoryInterface;
 use Yahyya\taskmanager\App\Models\Label;
 
 class LabelController extends Controller
 {
-    public function list(): LabelCollection
+    private LabelRepositoryInterface $repo;
+    public function __construct(LabelRepositoryInterface $labelRepository)
     {
-        return new LabelCollection(Label::all());
+        $this->repo = $labelRepository;
     }
 
-    public function store(StoreLabel $req): bool
+    public function list(): LabelCollection
     {
-        try {
-            Label::create($req->validated());
-            return true;
-        } catch (\Exception $ex){
-            return false;
-        }
+        return new LabelCollection($this->repo->list());
+    }
+
+    public function store(StoreLabel $req): \Illuminate\Http\JsonResponse
+    {
+        $details = $req->validated();
+        return response()->json(
+            [
+                'res'=>$this->repo->store($details)
+            ]
+        );
     }
 }

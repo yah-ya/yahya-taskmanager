@@ -16,14 +16,14 @@ class CreateTaskLabelsTable extends Migration
         Schema::create('task_labels', function (Blueprint $table) {
             $table->id();
             $table->integer('task_id');
-            $table->foreign('task_id')->references('id')->on('tasks');
+//            $table->foreign('task_id')->references('id')->on('tasks');
 
             $table->integer('label_id');
-            $table->foreign('label_id')->references('id')->on('labels');
+//            $table->foreign('label_id')->references('id')->on('labels');
 
             $table->timestamps();
 
-            $table->index(['task_id','user_id']);
+            $table->index(['task_id','label_id']);
         });
     }
 

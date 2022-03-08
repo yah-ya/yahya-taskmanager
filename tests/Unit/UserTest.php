@@ -18,6 +18,7 @@ use Yahyya\taskmanager\App\Http\Requests\UpdateTask;
 use Yahyya\taskmanager\App\Models\Label;
 use Yahyya\taskmanager\App\Models\Task;
 use Yahyya\taskmanager\App\Models\User;
+use Yahyya\taskmanager\App\Repositories\LabelRepository;
 use Yahyya\taskmanager\Events\TaskStatusChanged;
 use Yahyya\taskmanager\Mail\UpdateMail;
 
@@ -80,7 +81,8 @@ class UserTest extends TestCase
 
     public function test_user_can_add_unique_labels()
     {
-        $labelController = new LabelController();
+        $repoMock = $this->createMock(LabelRepository::class);
+        $labelController = new LabelController($repoMock);
 
         $request = new StoreLabel();
         $request->merge(['title' => 'Test Label']);
@@ -155,7 +157,9 @@ class UserTest extends TestCase
     public function test_user_able_to_get_list_of_labels()
     {
         $taskController = new TaskController();
-        $labelController = new LabelController();
+
+        $repoMock = $this->createMock(LabelRepository::class);
+        $labelController = new LabelController($repoMock);
 
         $task = factory(Task::class)->create();
         $newTask = factory(Task::class)->create();
